@@ -1,0 +1,9 @@
+.metadata/
+target/
+node_modules/
+dist/
+application.properties
+.env
+.vscode/
+.idea/
+*.log
