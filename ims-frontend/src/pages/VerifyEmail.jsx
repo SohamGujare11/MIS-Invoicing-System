@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
 function VerifyEmail() {
-
     const [searchParams] = useSearchParams();
 
     const token = searchParams.get("token");
@@ -11,7 +10,6 @@ function VerifyEmail() {
     const [message, setMessage] = useState("");
 
     useEffect(() => {
-
         if (!token) {
             setStatus("error");
             setMessage("Invalid or missing verification token.");
@@ -19,11 +17,9 @@ function VerifyEmail() {
         }
 
         const verifyEmail = async () => {
-
             try {
-
                 const response = await fetch(
-                    `http://localhost:8080/api/auth/verify-email?token=${encodeURIComponent(token)}`
+                    `https://mis-invoicing-system-production-559d.up.railway.app/api/auth/verify-email?token=${encodeURIComponent(token)}`
                 );
 
                 const data = await response.json();
@@ -42,9 +38,7 @@ function VerifyEmail() {
                     data.message ||
                     "Email verified successfully. You can now login."
                 );
-
             } catch (error) {
-
                 setStatus("error");
 
                 setMessage(
@@ -55,12 +49,10 @@ function VerifyEmail() {
         };
 
         verifyEmail();
-
     }, [token]);
 
     return (
         <div className="auth-container">
-
             <div className="auth-card">
 
                 <h1>MIS Invoicing System</h1>
@@ -100,17 +92,14 @@ function VerifyEmail() {
                         </div>
 
                         <div className="auth-links">
-
                             <Link to="/login">
                                 Back to Login
                             </Link>
-
                         </div>
                     </>
                 )}
 
             </div>
-
         </div>
     );
 }
